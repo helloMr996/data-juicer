@@ -1,0 +1,23 @@
+# global parameters
+project_name: 'the-stack-v1v2-full-Python'
+dataset_path: 
+   '1 /mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/staging-stack-v1-python-filterscore.parquet 1 /mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscore.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v1v2-full-Python/the-stack-v1v2-Python-merge.parquet'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: false
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - document_simhash_deduplicator:
+      tokenization: space
+      window_size: 6
+      lowercase: true
+      ignore_pattern: '\p{P}'
+      num_blocks: 6
+      hamming_distance: 4
+      
+

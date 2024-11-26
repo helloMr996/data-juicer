@@ -1,0 +1,27 @@
+# Process config example for dataset
+
+# global parameters
+project_name: 'stack-v2-analyzer'
+dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/the-stack-v2-full-Python/chunk_97_0.gz'  # path to your dataset directory or file
+np: 10  # number of subprocess to process your dataset
+
+export_path: './outputs/stack-v2-analyzer/stack-v2-analyzer-result.jsonl'
+text_keys: 'text'
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - alphanumeric_filter:  # 18766
+      tokenization: false
+  - alphanumeric_filter:  # 146432
+      tokenization: true
+  - average_line_length_filter:  # for code
+  - character_repetition_filter:
+      rep_len: 10
+  - maximum_line_length_filter:  # for code
+  - text_length_filter:
+  - words_num_filter:
+      lang: en
+  - word_repetition_filter:
+      rep_len: 10
+      tokenization: False
+      rep_len: 10

@@ -1,0 +1,23 @@
+# Process config example for dataset
+
+# global parameters
+project_name: 'starcoderdata-analyzer'
+dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/starcoderdata/python/'  # path to your dataset directory or file
+np: 10  # number of subprocess to process your dataset
+
+export_path: './outputs/starcoderdata-analyzer/python/'
+text_keys: 'content'
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - alphanumeric_filter:  # 18766
+      tokenization: false
+  - alphanumeric_filter:  # 146432
+      tokenization: true
+  - average_line_length_filter:  # for code
+  - character_repetition_filter:
+  - maximum_line_length_filter:  # for code
+  - text_length_filter:
+  - words_num_filter:
+  - word_repetition_filter:
+      rep_len: 10

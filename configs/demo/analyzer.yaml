@@ -15,3 +15,6 @@ process:
   - perplexity_filter:
       lang: 'en'
       max_ppl: 1500
+  - maximum_line_length_filter:
+  - alphanumeric_filter:                                    
+      tokenization: false 

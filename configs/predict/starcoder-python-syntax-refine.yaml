@@ -1,0 +1,14 @@
+# global parameters
+project_name: 'starcoderdata'
+dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/starcoderdata/python/train-00001-of-00059.parquet'  # path to your dataset directory or file
+export_path: './outputs/starcoder-sandbox/starcoderdata/python/syntax/train-00001-of-00059.parquet'
+text_keys: 'content'
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+ds_cache_dir: './outputs/starcoder-sandbox/starcoderdata/python/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_head_syntax_error_mapper:
+  - code_syntax_error_filter:

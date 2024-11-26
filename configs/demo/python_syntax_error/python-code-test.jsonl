@@ -1,0 +1,3 @@
+{"text":"print(\"Hello, World!"}
+{"text":"'''\nCreated on Nov 30, 2015\n\n@author: Mada\n'''"}
+{"text":"import sys\n\np = [1,2,3,4,5]\nz = ''\nfor i in p:\n\n   z = z + str(i) + ','\n    \n\nprint z[:-1]"}

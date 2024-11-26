@@ -1,0 +1,65 @@
+# global parameters
+project_name: 'the-stack-v2-full-java'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-java/part8'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-java/filter/part8/the-stack-v2-full-java-filter8.parquet'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/cache/the-stack-v2-full-java/part8'
+np: 10  # number of subprocess to process your dataset
+open_tracer: True
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+
+  - code_muti_language_syntax_filter:
+      language: 'java'
+  - alphanumeric_filter:
+      tokenization: False
+      # 3-σ区间: (0.38723212396638823, 0.9391501893512368)
+      min_ratio: 0.38
+      max_ratio: 0.94
+  - alphanumeric_filter:
+      tokenization: True
+      #3-σ区间: (0.7498668669151733, 3.5257513825990054)
+      min_ratio: 0.74
+      max_ratio: 3.53
+  - average_line_length_filter:
+      #3-σ区间: (2.6190390893433673, 52.990666613764006)
+      #百分位数 第0.5百分位数是: 10.9090909091  第99.5百分位数是: 54.4802620967949
+      min_len: 10
+      max_len: 100
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.05
+      max_ratio: 0.34
+  - maximum_line_length_filter:
+      min_len: 20
+      max_len: 700
+  - text_length_filter:
+      min_len: 20
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 10
+      max_num: 2500
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.45
+  - document_simhash_deduplicator:
+      tokenization: space
+      window_size: 6
+      lowercase: true
+      ignore_pattern: '\p{P}'
+      num_blocks: 6
+      hamming_distance: 4
+      
+

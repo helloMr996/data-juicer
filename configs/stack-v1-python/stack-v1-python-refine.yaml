@@ -1,0 +1,74 @@
+# global parameters
+project_name: 'staging-stack-v1-python'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/python'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/filter/staging-stack-v1-python-filter.parquet'
+text_keys: 'content'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: True
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+  - code_muti_language_syntax_filter:
+      language: 'python'
+  - alphanumeric_filter:
+      tokenization: False
+      # 3-σ区间: (0.3635223851420624, 0.8741527787609922)
+      min_ratio: 0.36
+      max_ratio: 0.87
+  - alphanumeric_filter:
+      tokenization: True
+      # 3-σ区间: (0.5915874052767736, 3.2458873946824167)
+      min_ratio: 0.59
+      max_ratio: 3.24
+  - average_line_length_filter:
+      # 第0.5百分位数是: 12.048168498155
+      # 第99.5百分位数是: 85.37482837524028
+      min_len: 10
+      max_len: 100
+  - character_repetition_filter:
+      rep_len: 10
+      # 3-σ区间: (-0.07053439779058365, 0.3468751793067514)
+      min_ratio: 0.03
+      max_ratio: 0.34
+  - maximum_line_length_filter:
+      # 第0.5百分位数是: 21.0
+      # 第99.5百分位数是: 1010.8500000000058
+      min_len: 20
+      max_len: 1010
+  - text_length_filter:
+      # 第0.5百分位数是: 30.0
+      # 第99.5百分位数是: 67510.70000000036
+      min_len: 30
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      # 第0.5百分位数是: 3.0
+      # 第99.5百分位数是: 4265.400000000023
+      min_num: 10
+      max_num: 4300
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      # 第0.5百分位数是: 0.0
+      # 第99.5百分位数是: 0.5864057105100023
+      max_ratio: 0.58
+
+  - document_simhash_deduplicator:
+      tokenization: space
+      window_size: 6
+      lowercase: true
+      ignore_pattern: '\p{P}'
+      num_blocks: 6
+      hamming_distance: 4
+      
+

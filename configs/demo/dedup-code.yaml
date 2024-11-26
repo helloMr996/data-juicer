@@ -1,0 +1,20 @@
+dataset_path: /mnt/hh/
+export_path: ./outputs/stack-v2-analyzer/stack-v2-analyzer-result.jsonl
+np: 10
+process:
+- alphanumeric_filter:
+    tokenization: false
+- alphanumeric_filter:
+    tokenization: true
+- average_line_length_filter: null
+- character_repetition_filter:
+    rep_len: 10
+- maximum_line_length_filter: null
+- text_length_filter: null
+- words_num_filter:
+    lang: en
+- word_repetition_filter:
+    rep_len: 10
+    tokenization: false
+project_name: stack-v2-analyzer
+text_keys: text

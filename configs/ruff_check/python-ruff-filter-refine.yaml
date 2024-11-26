@@ -1,0 +1,18 @@
+# global parameters
+project_name: 'ruff_check_test'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscoreTmpSplit_1.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/ruff/the-stack-v2-full-Python-ruffFilter.parquet'
+text_keys: 'text'
+# suffixes: ['.parquet']
+np: 50  # number of subprocess to process your dataset
+open_tracer: false
+trace_num: 50
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/ruff/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - python_code_ruff_check_filter:
+      ruff_config_path: '/mnt/tmp/apps/cmss-yangjiandong/ruff/pyproject.toml'
+      tmp_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/tmp'
+      ruff_rato: 0.2

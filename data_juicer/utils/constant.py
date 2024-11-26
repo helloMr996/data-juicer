@@ -15,6 +15,7 @@ class Fields(object):
     meta = DEFAULT_PREFIX + 'meta__'
     context = DEFAULT_PREFIX + 'context__'
     suffix = DEFAULT_PREFIX + 'suffix__'
+    score = 'doc_score'
 
     # video_frame_tags
     video_frame_tags = DEFAULT_PREFIX + 'video_frame_tags__'
@@ -133,6 +134,10 @@ class StatsKeysConstant(object):
     num_token = 'num_token'
     num_words = 'num_words'
     word_rep_ratio = 'word_rep_ratio'
+    code_syntax_error = 'code_syntax_error'
+    score_min = 'score_min'
+    muti_code_syntax_error = 'muti_code_syntax_error'
+    ruff_EF_ratio = 'ruff_EF_ratio'
 
     # image
     aspect_ratios = 'aspect_ratios'

@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'starcoderdata'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/score/the-stack-v2-full-Python-filterscore.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/the-stack-v2-full-Python-filterscore.parquet'
+text_keys: 'text'
+suffixes: ['.parquet']
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 10
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/train/starcoder-python/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - score_filter:
+      min_score: 0.277

@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'original'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/original/python_data_000.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/original/python_data_000.jsonl'
+text_keys: 'content'
+# suffixes: ['.parquet']
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 10
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/original/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - code_muti_language_syntax_filter:
+      language: "java"

@@ -1,0 +1,52 @@
+dataset_path: /mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/chunk_97_0.jsonl
+ds_cache_dir: ./outputs/stack-v2-sandbox/the-stack-v2-full-Python/cache
+export_path: ./outputs/stack-v2-sandbox/the-stack-v2-full-Python/fliter/chunk_97_0.jsonl
+np: 10
+open_tracer: true
+process:
+- clean_email_mapper: null
+- clean_links_mapper: null
+- fix_unicode_mapper: null
+- punctuation_normalization_mapper: null
+- whitespace_normalization_mapper: null
+- clean_copyright_mapper: null
+- alphanumeric_filter:
+    max_ratio: 3.197039922681582
+    min_ratio: 0.44780512143601126
+    tokenization: false
+- alphanumeric_filter:
+    max_ratio: 3.197039922681582
+    min_ratio: 0.44780512143601126
+    tokenization: true
+- average_line_length_filter:
+    max_len: 96.77161070074791
+    min_len: -34.27466748921887
+- character_repetition_filter:
+    max_ratio: 0.3410682053141798
+    min_ratio: -0.07157898127808562
+    rep_len: 10
+- maximum_line_length_filter:
+    max_len: 1752.2733151042848
+    min_len: -1547.2673781984604
+- text_length_filter:
+    min_len: -32172.898751893514
+- words_num_filter:
+    lang: en
+    max_num: 2280.832346399291
+    min_num: -1804.7264133737972
+    tokenization: false
+- word_repetition_filter:
+    lang: en
+    max_ratio: 0.2814842263572942
+    rep_len: 10
+    tokenization: false
+- document_simhash_deduplicator:
+    hamming_distance: 4
+    ignore_pattern: \p{P}
+    lowercase: true
+    num_blocks: 6
+    tokenization: space
+    window_size: 6
+project_name: the-stack-v2-full-Python
+text_keys: text
+use_cache: false

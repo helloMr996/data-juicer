@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'the-stack-v2-full-Python'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-Python/chunk_97_0.jsonl'  # path to your dataset directory or file
+export_path: './outputs/stack-v2-sandbox-syntax/the-stack-v2-full-Python/fliter/chunk_97_0.jsonl'
+text_keys: 'text'
+use_cache: false
+ds_cache_dir: './outputs/stack-v2-sandbox-syntax/the-stack-v2-full-Python/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - code_syntax_error_filter:
+      
+
