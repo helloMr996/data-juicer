@@ -5,7 +5,7 @@ export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/better/data_100.jsonl'
 text_keys: 'text'
 # suffixes: ['.parquet']
 np: 10  # number of subprocess to process your dataset
-open_tracer: false
+open_tracer: true
 trace_num: 10
 ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/better/cache'
 
