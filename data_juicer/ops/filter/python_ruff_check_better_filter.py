@@ -39,11 +39,6 @@ class PythonRuffCheckBetterFilter(Filter):
         self.ruff_config_path = ruff_config_path
         self.tmp_dir = tmp_dir
         self.ruff_rato = ruff_rato
-        
-    def get_file_name_without_extension(self, file_path):
-        # 先获取文件名，然后分离扩展名
-        base_name = os.path.basename(file_path)
-        return os.path.splitext(base_name)[0]
 
     def run_ruff_check(self, python_file_path, config_path):
         # 定义Shell脚本的路径和参数
@@ -76,9 +71,6 @@ class PythonRuffCheckBetterFilter(Filter):
         except json.JSONDecodeError as e:
             # 处理JSON解码错误
             print(f"Error decoding JSON: {e}")
-            print(f'Return code: {result.returncode}')
-            print(f'Standard Output:\n{result.stdout}')
-            print("##################################")
             grouped_counts["F"] = 0
             grouped_counts["E"] = 0
 

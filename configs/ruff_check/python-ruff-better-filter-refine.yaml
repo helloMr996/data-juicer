@@ -1,11 +1,11 @@
 # global parameters
 project_name: 'ruff_check_better'
-dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/ruff/high/data_100.parquet'  # path to your dataset directory or file
-export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/better/data_100.jsonl'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/split'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/better/the-stack-v2-Python-filterscoreSplit_2.parquet'
 text_keys: 'text'
 # suffixes: ['.parquet']
 np: 10  # number of subprocess to process your dataset
-open_tracer: true
+open_tracer: false
 trace_num: 10
 ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/better/cache'
 

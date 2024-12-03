@@ -1,0 +1,60 @@
+# global parameters
+project_name: 'the-stack-v2-c'
+dataset_path: '/home/jovyan/work/workspace/cmss-wangdepeng/'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy.jsonl'
+# suffixes: ['.jsonl']
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: True
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+#   - clean_email_mapper:
+#   - clean_links_mapper:
+#   - fix_unicode_mapper:
+#   - punctuation_normalization_mapper:
+#   - whitespace_normalization_mapper:
+#   - clean_copyright_mapper:
+#   - code_syntax_error_filter:
+  - alphanumeric_filter:
+      tokenization: False
+    #   min_ratio: 0.34
+    #   max_ratio: 0.87
+  - alphanumeric_filter:
+      tokenization: True
+#       min_ratio: 0.44
+#       max_ratio: 3.19
+  - average_line_length_filter:
+    #   min_len: 10
+    #   max_len: 100
+  - character_repetition_filter:
+      rep_len: 10
+    #   min_ratio: 0.05
+    #   max_ratio: 0.34
+  - maximum_line_length_filter:
+    #   min_len: 20
+    #   max_len: 700
+  - text_length_filter:
+    #   min_len: 20
+  - words_num_filter:
+      lang: en
+      tokenization: False
+    #   min_num: 20
+    #   max_num: 5100
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+    #   max_ratio: 0.75
+#   - document_simhash_deduplicator:
+#       tokenization: space
+#       window_size: 6
+#       lowercase: true
+#       ignore_pattern: '\p{P}'
+#       num_blocks: 6
+#       hamming_distance: 4
+      
+

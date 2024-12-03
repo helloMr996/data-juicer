@@ -4,7 +4,7 @@ import pandas as pd
 import pyarrow.parquet as pq
 import pyarrow as pa
 
-def split_large_parquet(input_file, output_prefix, rows_per_file=9000000):
+def split_large_parquet(input_file, output_prefix, rows_per_file=300000):
     # 读取 Parquet 文件
     table = pq.read_table(input_file)
     
@@ -30,6 +30,6 @@ def split_large_parquet(input_file, output_prefix, rows_per_file=9000000):
         print(f"Saved {output_file} with {end_row - start_row} rows")
 
 # 使用示例
-input_file = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscoreTmp.parquet'  # 输入的大 Parquet 文件路径
-output_prefix = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscoreTmpSplit'       # 输出文件的前缀
+input_file = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscoreTmpSplit_2.parquet'  # 输入的大 Parquet 文件路径
+output_prefix = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/split/the-stack-v2-full-Python-filterscoreTmpSplit_2'       # 输出文件的前缀
 split_large_parquet(input_file, output_prefix)

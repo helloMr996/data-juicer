@@ -2,7 +2,7 @@ import json
 import statistics  
   
 # 假设你的 JSONL 文件名为 'data.jsonl'  
-filename = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/analysis/result/data-analysis_stats.jsonl'  
+filename = '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy_stats.jsonl'  
   
 alnum_ratios = []  
   
@@ -10,7 +10,7 @@ alnum_ratios = []
 with open(filename, 'r', encoding='utf-8') as file:  
     for line in file:  
         data = json.loads(line)  
-        alnum_ratio = data.get('__dj__stats__', {}).get('num_words', None)  
+        alnum_ratio = data.get('__dj__stats__', {}).get('max_line_length', None)  
         if alnum_ratio is not None:  
             alnum_ratios.append(alnum_ratio)  
   
