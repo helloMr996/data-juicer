@@ -1,11 +1,11 @@
 # global parameters
-project_name: 'the-stack-v2-c'
-dataset_path: '/home/jovyan/work/workspace/cmss-wangdepeng/'  # path to your dataset directory or file
-export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy.jsonl'
+project_name: 'stack-v2-js'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/js-analyze'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/js-analyze-result/analy.jsonl'
 # suffixes: ['.jsonl']
 text_keys: 'text'
 use_cache: true
-ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy/cache'
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/js-analyze-result/cache'
 np: 10  # number of subprocess to process your dataset
 open_tracer: True
 

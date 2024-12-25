@@ -1,40 +1,10 @@
-from tree_sitter import Language, Parser  
-import tree_sitter_python ,tree_sitter_java, tree_sitter_go, tree_sitter_cpp, tree_sitter_javascript 
-
-# PYTHON_LANGUAGE = Language(tree_sitter_python.language())  
-PYTHON_LANGUAGE = Language('/root/miniconda3/envs/data-juicer/lib/python3.8/site-packages/tree_sitter_python/_binding.abi3.so','python') 
-JAVA_LANGUAGE = Language('/root/miniconda3/envs/data-juicer/lib/python3.8/site-packages/tree_sitter_java/_binding.abi3.so','java')  
-GO_LANGUAGE = Language('/root/miniconda3/envs/data-juicer/lib/python3.8/site-packages/tree_sitter_go/_binding.abi3.so','go')  
-CPP_LANGUAGE = Language('/root/miniconda3/envs/data-juicer/lib/python3.8/site-packages/tree_sitter_cpp/_binding.abi3.so','cpp')  
-JAVASCRIPT_LANGUAGE = Language('/root/miniconda3/envs/data-juicer/lib/python3.8/site-packages/tree_sitter_javascript/_binding.abi3.so','javascript')  
-
-tree_sitter_x = {
-        "python": PYTHON_LANGUAGE,
-        "java": JAVA_LANGUAGE,
-        "go": GO_LANGUAGE,
-        "cpp": CPP_LANGUAGE,
-        "javascript": JAVASCRIPT_LANGUAGE
-    }
-
-# 语法错误解析
-def has_syntax_error(code: str, language: str = "python") -> bool:  
-    parser = Parser()  
-    parser.set_language(tree_sitter_x[language])  
-    tree = parser.parse(bytes(code, "utf8"))  
-    # 检查解析是否成功 
-    return tree.root_node.has_error
-
-#示例代码  
-code = '''
 package com.example.oneteaapp.wxapi.util;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.alipay.sdk.app.PayTask;
 import com.example.oneteaapp.R;
 import com.example.oneteaapp.wxapi.WXPayEntryActivity;
@@ -44,7 +14,6 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-
 import java.util.Map;
 
 public class WeiXinConstants {
@@ -137,10 +106,3 @@ public class WeiXinConstants {
 //        payThread.start();
 //    }
 }
-'''
-if has_syntax_error(code, 'java'):  
-    print("Syntax error detected!")  
-else:  
-    print("No syntax error.")
-
-

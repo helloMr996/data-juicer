@@ -94,12 +94,16 @@ def load_dataset(spark, ds_path, text_key='text', only_text=False):
         df = spark.read.json(ds_path)
     elif ds_path.endswith('.parquet'):
         df = spark.read.parquet(ds_path)
+    elif ds_path.endswith('/'):
+        # 支持路径下parquet文件加载
+        df = spark.read.parquet(ds_path + '*.parquet')
     else:
         raise NotImplementedError('Dataset type is not supported for now. '
                                   'Suffix of dataset file should be one of '
                                   '[.json, .jsonl, .parquet]')
     # rename the column that stores texts to "text" if necessary
     if text_key != 'text':
+        logger.info('*****************************')
         df = df.withColumnRenamed(text_key, 'text')
     # whether to keep "text" column only
     if only_text:

@@ -1,0 +1,60 @@
+# global parameters
+project_name: 'stack-v2-go'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-go'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-go-filter/the-stack-v2-go.parquet'
+# suffixes: ['.jsonl']
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-go-filter/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: True
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+  # - code_syntax_error_filter:
+  - alphanumeric_filter:
+      tokenization: False
+      min_ratio: 0.448
+      max_ratio: 0.879
+  - alphanumeric_filter:
+      tokenization: True
+      min_ratio: 0.49
+      max_ratio: 3.12
+  - average_line_length_filter:
+      min_len: 10
+      max_len: 60
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.01
+      max_ratio: 0.3
+  - maximum_line_length_filter:
+      min_len: 20
+      max_len: 500
+  - text_length_filter:
+      min_len: 60
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 10
+      max_num: 2200
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.557
+#   - document_simhash_deduplicator:
+#       tokenization: space
+#       window_size: 6
+#       lowercase: true
+#       ignore_pattern: '\p{P}'
+#       num_blocks: 6
+#       hamming_distance: 4
+      
+

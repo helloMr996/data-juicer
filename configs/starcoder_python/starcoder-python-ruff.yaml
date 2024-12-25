@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'starcoderdata'
+dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/starcoderdata/python/'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/starcoderdata/starcoder-python-ruff.parquet'
+text_keys: 'content'
+np: 10  # number of subprocess to process your dataset
+open_tracer: false
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/starcoderdata/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - python_ruff_check_better_filter:
+      ruff_config_path: '/mnt/tmp/apps/cmss-yangjiandong/ruff/pyproject.toml'
+      tmp_dir: '/dev/shm/tmp'
+      ruff_rato: 0.15

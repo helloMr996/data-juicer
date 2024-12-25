@@ -11,15 +11,8 @@ open_tracer: false
 # process schedule
 # a list of several process operators with their arguments
 process:
-  - clean_email_mapper:
-  - clean_links_mapper:
-  - fix_unicode_mapper:
-  - punctuation_normalization_mapper:
-  - whitespace_normalization_mapper:
-  - clean_copyright_mapper:
-
-  - code_muti_language_syntax_filter:
-      language: 'cpp'
+#   - code_muti_language_syntax_filter:
+#       language: 'cpp'
   - alphanumeric_filter:
       tokenization: False
       min_ratio: 0.289
@@ -57,5 +50,9 @@ process:
 #       ignore_pattern: '\p{P}'
 #       num_blocks: 6
 #       hamming_distance: 4
-      
-
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:

@@ -3,7 +3,7 @@ import statistics
 import numpy as np  
 
 # 假设你的 JSONL 文件名为 'data.jsonl'  
-filename = '/mnt/tmp/apps/cmss-yangjiandong/data/stack-v2-c++/analy_stats.jsonl'  
+filename = '/mnt/tmp/apps/cmss-yangjiandong/data/js-analyze-result/analy_stats.jsonl'  
   
 alnum_ratios = []  
 alpha_token_ratios =[]

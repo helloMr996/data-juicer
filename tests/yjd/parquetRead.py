@@ -3,7 +3,7 @@ import pandas as pd
 # 替换为你的Parquet文件路径  
 # parquet_file_path = '/workspace/mnt/cmss-liujiahao/ModelLink/dataset/abap/data-00000-of-00001.parquet'
 # parquet_file_path = '/root/work/filestorage/cmss-yangjiandong/data/staing-python10/data-00143-of-00144-filter10.parquet'
-parquet_file_path='/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscore.parquet'
+parquet_file_path='/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-java/filter/part1/the-stack-v2-full-java-filter1.parquet'
   
 # 读取Parquet文件  
 df = pd.read_parquet(parquet_file_path)  

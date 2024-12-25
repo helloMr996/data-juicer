@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'stack-v2-C++'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-c++-pipleline/score/the-stack-v2-c++-nosyntax-score.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-c++-pipleline/scoreresult/the-stack-v2-c++-nosyntax-scorefilter.parquet'
+text_keys: 'text'
+suffixes: ['.parquet']
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 10
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-c++-pipleline/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - score_filter:
+      min_score: 0.33

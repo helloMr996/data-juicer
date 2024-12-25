@@ -22,34 +22,34 @@ def read_jsonl_line(file_path, line_number):
         return None  
   
 # 示例使用  
-file_path = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/filter/staging-stack-v1-python-filter.parquet'  
+file_path = '/mnt/tmp/apps/cmss-yangjiandong/data/go-analyze/chunk_0_2.jsonl'  
 line_number = 5  # 读取第三行（行号从 0 开始）  
 data = read_jsonl_line(file_path, line_number)  
 if data:  
-    print(data)  
+    print(data['text'])  
 else:  
     print("未找到指定行或文件读取失败")
 
 
 
-def count_jsonl_lines(file_path):  
-    """  
-    计算 JSONL 文件的总行数。  
+# def count_jsonl_lines(file_path):  
+#     """  
+#     计算 JSONL 文件的总行数。  
   
-    :param file_path: JSONL 文件的路径  
-    :return: 文件的总行数  
-    """  
-    try:  
-        with open(file_path, 'r', encoding='utf-8') as file:  
-            return sum(1 for _ in file)  
-    except FileNotFoundError:  
-        print(f"文件 {file_path} 未找到")  
-        return -1  # 或者你可以选择返回其他表示错误的值  
+#     :param file_path: JSONL 文件的路径  
+#     :return: 文件的总行数  
+#     """  
+#     try:  
+#         with open(file_path, 'r', encoding='utf-8') as file:  
+#             return sum(1 for _ in file)  
+#     except FileNotFoundError:  
+#         print(f"文件 {file_path} 未找到")  
+#         return -1  # 或者你可以选择返回其他表示错误的值  
   
-# 示例使用  
-file_path = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/filter/staging-stack-v1-python-filter.parquet'  
-total_lines = count_jsonl_lines(file_path)  
-if total_lines != -1:  
-    print(f"JSONL 文件 {file_path} 的总行数是: {total_lines}")  
-else:  
-    print("无法计算文件的总行数")
+# # 示例使用  
+# file_path = '/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/filter/staging-stack-v1-python-filter.parquet'  
+# total_lines = count_jsonl_lines(file_path)  
+# if total_lines != -1:  
+#     print(f"JSONL 文件 {file_path} 的总行数是: {total_lines}")  
+# else:  
+#     print("无法计算文件的总行数")

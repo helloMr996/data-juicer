@@ -8,7 +8,7 @@ import pyarrow.parquet as pq
 df = pq.read_table('/mnt/tmp/apps/cmss-yangjiandong/staging_stack_v1/scoreresult/the-stack-v2-full-Python-filterscoreTmpSplit_1.parquet').to_pandas()
 
 # 提取前100行
-df_100 = df.head(10000)
+df_100 = df.head(10)
 
 # 写入新的parquet文件
-df_100.to_parquet('/mnt/tmp/apps/cmss-yangjiandong/ruff/high/data_10000.parquet')
+df_100.to_parquet('/mnt/tmp/apps/cmss-yangjiandong/ruff/high/data_1000.parquet')

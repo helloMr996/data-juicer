@@ -34,8 +34,3 @@ print(f"平均值: {mean_alnum_ratio}")
 print(f"方差: {variance_alnum_ratio}")
 print(f"样本标准差: {std_dev_alnum_ratio}")
 print(f"3-σ区间: ({lower_bound}, {upper_bound})") 
-
-
-# # 可选：检查哪些数据点落在3-σ区间之外  
-# out_of_3_sigma = [ratio for ratio in alnum_ratios if not (lower_bound <= ratio <= upper_bound)]  
-# print(f"落在3-σ区间之外的数据点: {out_of_3_sigma}")
