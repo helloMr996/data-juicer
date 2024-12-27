@@ -22,11 +22,18 @@ def read_jsonl_line(file_path, line_number):
         return None  
   
 # 示例使用  
-file_path = '/mnt/tmp/apps/cmss-yangjiandong/data/go-analyze/chunk_0_2.jsonl'  
-line_number = 5  # 读取第三行（行号从 0 开始）  
+file_path = '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/score.jsonl'  
+line_number = 0  # 读取第三行（行号从 0 开始）  
 data = read_jsonl_line(file_path, line_number)  
 if data:  
-    print(data['text'])  
+    # print(data['text'])  
+    
+    lines = data['text'].split('\n')
+    non_empty_line_count = 0
+    for line in lines:
+        if line.strip():
+          non_empty_line_count += 1
+    print(f"Non-empty line count: {non_empty_line_count}")
 else:  
     print("未找到指定行或文件读取失败")
 

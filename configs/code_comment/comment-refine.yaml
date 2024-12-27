@@ -1,0 +1,18 @@
+# global parameters
+project_name: 'commentFilter'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/comment.jsonl'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/comment-filter.jsonl'
+text_keys: 'text'
+# suffixes: ['.parquet']
+np: 2  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 10
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - code_comment_rato_filter:
+      method: 'char-rato'
+      language: 'java'
+      ratio: 0.8

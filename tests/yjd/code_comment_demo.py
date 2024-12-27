@@ -24,6 +24,25 @@ def get_comment_text(node, comments=[]):
         get_comment_text(child, comments)
     return comments
 
+# 定义一个函数来递归遍历并打印树节点
+def print_tree(node, indent=0):
+    # 打印当前节点的类型和内容（如果有的话）
+    print(' ' * indent + f'Node type: {node.type}, Text: {node.text.decode("utf8") if node.text else ""}')
+    # 遍历当前节点的所有子节点
+    for child in node.children:
+        print_tree(child, indent + 2)
+
+def extractNonCommentCode(nodes, codes):
+    for node in nodes:
+        if node.type == 'comment' or node.type == 'single_line_comment' or node.type == 'multi_line_comment' or node.type == 'line_comment':
+        #    print(f'Node type: {node.type}, Text: {node.text.decode("utf8") if node.text else ""}')
+           continue
+        else:
+           codes += node.text.decode("utf8") + '\n'
+        if node.children:
+            extractNonCommentCode(node.children, codes)
+    return codes
+
 def calculate_comment_ratio(code_text, comment_texts):
     total_code_chars = len(code_text)
     total_comment_chars = sum(len(comment) for comment in comment_texts)
@@ -37,17 +56,22 @@ def main(file_path, language):
     parser.set_language(tree_sitter_x[language])
     tree = parser.parse(bytes(code_text, "utf8"))
  
-    root_node = tree.root_node
-    comments = get_comment_text(root_node)
-    print('*************************************************************')
-    print(comments)
- 
-    comment_ratio = calculate_comment_ratio(code_text, comments)
- 
-    print(f"Total comments characters: {sum(len(comment) for comment in comments)}")
-    print(f"Total code characters: {len(code_text)}")
-    print(f"Comment ratio: {comment_ratio:.2%}")
+    # # 从根节点开始打印树
+    # print_tree(tree.root_node)
+
+
+    # 提取非注释代码
+    codes = ''
+    print(extractNonCommentCode(tree.root_node.children, codes))
+
+    # node = tree.root_node
+    # print(f'Node type: {node.type}, Text: {node.text.decode("utf8") if node.text else ""}')
+    # print('******************************')
+
+    # node = tree.root_node.children
+    # print(node)
+   
  
 if __name__ == "__main__":
-    file_path = '/mnt/tmp/apps/cmss-yangjiandong/data-juicer/tests/yjd/WeiXinConstants.java'
-    main(file_path, 'java')
+    file_path = '/mnt/tmp/apps/cmss-yangjiandong/data-juicer/data_juicer/ops/filter/average_line_length_filter.py'
+    main(file_path, 'python')

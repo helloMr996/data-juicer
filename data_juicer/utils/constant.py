@@ -138,6 +138,7 @@ class StatsKeysConstant(object):
     score_min = 'score_min'
     muti_code_syntax_error = 'muti_code_syntax_error'
     ruff_EF_ratio = 'ruff_EF_ratio'
+    comment_ratio = 'comment_ratio'
 
     # image
     aspect_ratios = 'aspect_ratios'

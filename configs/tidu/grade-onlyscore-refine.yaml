@@ -1,0 +1,16 @@
+# global parameters
+project_name: 'gradeScore'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/only-score.jsonl'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/onlyscore.jsonl'
+text_keys: 'text'
+suffixes: ['.json']
+np: 2  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 10
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/tidu/cache'
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - score_filter:
+      min_score: 0.25

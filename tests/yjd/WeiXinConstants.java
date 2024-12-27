@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class WeiXinConstants {
     // APP_ID 替换为你的应用从官方网站申请到的合法appId
-   public static final String APP_ID = "wxcf6ea6e0b71b8132";
+   public static final String APP_ID = "wxcf6ea6e0b71b8132"; 
 
 //    private IWXAPI iwxapi; //微信支付api
 //

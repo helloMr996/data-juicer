@@ -21,7 +21,10 @@ from . import (alphanumeric_filter, audio_duration_filter,
                video_watermark_filter, word_repetition_filter,
                words_num_filter,code_syntax_error_filter,
                score_filter,code_muti_language_syntax_filter,
-               python_code_ruff_check_filter,python_ruff_check_better_filter)
+               python_code_ruff_check_filter,
+               python_ruff_check_better_filter,
+               code_comment_rato_filter)
+from .code_comment_rato_filter import CodeCommentRatoFilter
 from .python_ruff_check_better_filter import PythonRuffCheckBetterFilter       
 from .python_code_ruff_check_filter import PythonCodeRuffCheckFilter
 from .code_muti_language_syntax_filter import CodeMutiLanguageSyntaxFilter
@@ -72,7 +75,8 @@ from .word_repetition_filter import WordRepetitionFilter
 from .words_num_filter import WordsNumFilter
 
 __all__ = [
-    'PythonRuffCheckBetterFilter'
+    'code_comment_rato_filter',
+    'PythonRuffCheckBetterFilter',
     'PythonCodeRuffCheckFilter',
     'CodeMutiLanguageSyntaxFilter',
     'ScoreFilter',
