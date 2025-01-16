@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 import json
 
-with open('/mnt/tmp/apps/cmss-yangjiandong/data-juicer/output.jsonl', 'r') as f:
+with open('/mnt/tmp/apps/cmss-yangjiandong/data/opc/trace/filter-code_frac_string_filter.jsonl', 'r') as f:
     first_line = f.readline()
 
 data = json.loads(first_line)

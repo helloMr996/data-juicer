@@ -94,8 +94,9 @@ class CodeCommentRatoFilter(Filter):
                     total_code_chars = len(samples_list[i])
                     total_comment_chars = sum(len(comment) for comment in comments)
                     comment_ratio = total_comment_chars / total_code_chars if total_code_chars > 0 else 0
-                    # print('##########################################')
-                    # print(comment_ratio)
+                    # print(f"Total comments characters: {total_comment_chars}")
+                    # print(f"Total code characters: {total_code_chars}")
+                    # print(f"Comment ratio: {comment_ratio:.2%}")
 
                 samples_stats[i][StatsKeys.comment_ratio] = comment_ratio
 

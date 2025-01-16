@@ -1,0 +1,19 @@
+# global parameters
+project_name: 'opc-filter'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/opc/test.jsonl'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/opc/test-string-filter.jsonl'
+# suffixes: ['.jsonl']
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/opc/cache'
+np: 5  # number of subprocess to process your dataset
+open_tracer: True
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  # - code_frac_string_filter:
+  #       ratio: 0.9
+
+  - code_frac_dupe_line_filter:
+        ratio: 0.7

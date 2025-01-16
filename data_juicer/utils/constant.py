@@ -139,6 +139,8 @@ class StatsKeysConstant(object):
     muti_code_syntax_error = 'muti_code_syntax_error'
     ruff_EF_ratio = 'ruff_EF_ratio'
     comment_ratio = 'comment_ratio'
+    string_ratio = 'string_ratio'
+    dupe_line_ratio = 'dupe_line_ratio'
 
     # image
     aspect_ratios = 'aspect_ratios'

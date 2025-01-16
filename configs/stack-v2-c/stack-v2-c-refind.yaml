@@ -1,0 +1,47 @@
+# global parameters
+project_name: 'the-stack-v2-c'
+dataset_path: '/workspace/mnt/cmss-yangjiandong/data/the-stack-v2-full/c'  # path to your dataset directory or file
+export_path: '/workspace/mnt/cmss-yangjiandong/data/the-stack-v2-full/c-filter/the-stack-v2-full-c-filter.parquet'
+# suffixes: ['.jsonl']
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/workspace/mnt/cmss-yangjiandong/data/the-stack-v2-full/c-analyze-out/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: false
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+  - alphanumeric_filter:
+      tokenization: False
+      min_ratio: 0.26
+      max_ratio: 0.93
+
+  - average_line_length_filter:
+      min_len: 10
+      max_len: 100
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.05
+      max_ratio: 0.55
+  - maximum_line_length_filter:
+      min_len: 20
+      max_len: 500
+  - text_length_filter:
+      min_len: 42
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 10
+      max_num: 11850
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.45

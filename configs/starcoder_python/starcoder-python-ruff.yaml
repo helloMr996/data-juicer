@@ -1,7 +1,7 @@
 # global parameters
 project_name: 'starcoderdata'
-dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/starcoderdata/python/'  # path to your dataset directory or file
-export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/starcoderdata/starcoder-python-ruff.parquet'
+dataset_path: '/mnt/tmp/apps/cmss-wangdepeng/cpt/datasets/starcoderdata/python/train-00000-of-00059.parquet'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/starcoderdata/train-ruff-00000-of-00059.parquet'
 text_keys: 'content'
 np: 10  # number of subprocess to process your dataset
 open_tracer: false
