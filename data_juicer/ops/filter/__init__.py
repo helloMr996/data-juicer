@@ -25,7 +25,11 @@ from . import (alphanumeric_filter, audio_duration_filter,
                python_ruff_check_better_filter,
                code_comment_rato_filter,
                code_frac_string_filter,
-               code_frac_dupe_line_filter)
+               code_frac_dupe_line_filter,
+               code_encode_data_filter,
+               code_frac_hex_char_filter)
+from .code_frac_hex_char_filter import CodeFracHexCharFilter
+from .code_encode_data_filter import CodeEncodeDataFilter
 from .code_frac_dupe_line_filter import CodeFracDupeLineFilter
 from .code_frac_string_filter import CodeFracStringFilter
 from .code_comment_rato_filter import CodeCommentRatoFilter
@@ -79,6 +83,8 @@ from .word_repetition_filter import WordRepetitionFilter
 from .words_num_filter import WordsNumFilter
 
 __all__ = [
+    'code_frac_hex_char_filter',
+    'code_encode_data_filter',
     'code_frac_dupe_line_filter',
     'code_frac_string_filter',
     'code_comment_rato_filter',

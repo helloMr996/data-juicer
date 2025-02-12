@@ -14,6 +14,9 @@ open_tracer: True
 process:
   # - code_frac_string_filter:
   #       ratio: 0.9
-
-  - code_frac_dupe_line_filter:
-        ratio: 0.7
+  # - code_frac_dupe_line_filter:
+  #       ratio: 0.7
+  # - code_encode_data_filter:
+  #         ratio: 0.25
+  - code_frac_hex_char_filter:
+        ratio: 0.5

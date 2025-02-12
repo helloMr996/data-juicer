@@ -141,6 +141,8 @@ class StatsKeysConstant(object):
     comment_ratio = 'comment_ratio'
     string_ratio = 'string_ratio'
     dupe_line_ratio = 'dupe_line_ratio'
+    encode_data_ratio =  'encode_data_ratio'
+    hex_data_ratio = 'hex_data_ratio'
 
     # image
     aspect_ratios = 'aspect_ratios'

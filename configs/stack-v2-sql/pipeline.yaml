@@ -1,0 +1,59 @@
+# global parameters
+project_name: 'the-stack-v2-full-sql'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-full-SQL'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-SQL/pipeline/the-stack-v2-full-SQL-fliter.parquet'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/stack-SQL/pipeline/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: false
+trace_num: 100
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+  - alphanumeric_filter:
+      tokenization: False
+      min_ratio: 0.41
+      max_ratio: 0.84
+  - alphanumeric_filter:
+      tokenization: True
+      min_ratio: 0.66
+      max_ratio: 3.43
+  - average_line_length_filter:
+      min_len: 11
+      max_len: 98
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.01
+      max_ratio: 0.54
+  - maximum_line_length_filter:
+      min_len: 19
+      max_len: 841
+  - text_length_filter:
+      min_len: 28
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 3
+      max_num: 10440
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.94
+#   - document_simhash_deduplicator:
+#       tokenization: space
+#       window_size: 6
+#       lowercase: true
+#       ignore_pattern: '\p{P}'
+#       num_blocks: 6
+#       hamming_distance: 4
+      
+

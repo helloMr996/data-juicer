@@ -1,0 +1,38 @@
+# global parameters
+project_name: 'stack-v2-ts-analyze'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/ts-sample-bak'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/analyze/ts/stack-ts.jsonl'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/analyze/ts/cache'
+np: 5  # number of subprocess to process your dataset
+open_tracer: true
+percentiles: [0.25, 0.5, 0.75]
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - alphanumeric_filter:
+      tokenization: False
+
+  - alphanumeric_filter:
+      tokenization: True
+  
+  - average_line_length_filter:
+ 
+  - character_repetition_filter:
+      rep_len: 10
+ 
+  - maximum_line_length_filter:
+
+  - text_length_filter:
+   
+  - words_num_filter:
+      lang: en
+      tokenization: False
+   
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      

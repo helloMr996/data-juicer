@@ -1,0 +1,52 @@
+# global parameters
+project_name: 'the-stack-v2-json'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/json-bak'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/pipeline/json/the-stack-v2-json-fliter.parquet'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/pipeline/json/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 100
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - alphanumeric_filter:
+      tokenization: False
+      min_ratio: 0.32
+      max_ratio: 0.92
+  - alphanumeric_filter:
+      tokenization: True
+      min_ratio: 0.43
+      max_ratio: 3.58
+  - average_line_length_filter:
+      min_len: 11
+      max_len: 75184
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.0
+      max_ratio: 0.46
+  - maximum_line_length_filter:
+      min_len: 22
+      max_len: 75208
+  - text_length_filter:
+      min_len: 13
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 1
+      max_num: 4450
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.99
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+      
+

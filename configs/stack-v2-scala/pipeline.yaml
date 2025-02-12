@@ -1,0 +1,60 @@
+# global parameters
+project_name: 'the-stack-v2-full-scala'
+dataset_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/scala-bak'  # path to your dataset directory or file
+export_path: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/pipeline/scala/the-stack-v2-scala-filter.parquet'
+text_keys: 'text'
+use_cache: true
+ds_cache_dir: '/mnt/tmp/apps/cmss-yangjiandong/data/the-stack-v2-other/pipeline/scala/cache'
+np: 10  # number of subprocess to process your dataset
+open_tracer: true
+trace_num: 100
+keep_stats_in_res_ds: true
+keep_hashes_in_res_ds: true 
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+  - clean_copyright_mapper:
+  - alphanumeric_filter:
+      tokenization: False
+      min_ratio: 0.42
+      max_ratio: 0.84
+  - alphanumeric_filter:
+      tokenization: True
+      min_ratio: 0.96
+      max_ratio: 3.28
+  - average_line_length_filter:
+      min_len: 11
+      max_len: 70
+  - character_repetition_filter:
+      rep_len: 10
+      min_ratio: 0.0
+      max_ratio: 0.34
+  - maximum_line_length_filter:
+      min_len: 25
+      max_len: 600
+  - text_length_filter:
+      min_len: 48
+  - words_num_filter:
+      lang: en
+      tokenization: False
+      min_num: 4
+      max_num: 2080
+  - word_repetition_filter:
+      lang: en
+      tokenization: False
+      rep_len: 10
+      max_ratio: 0.46
+#   - document_simhash_deduplicator:
+#       tokenization: space
+#       window_size: 6
+#       lowercase: true
+#       ignore_pattern: '\p{P}'
+#       num_blocks: 6
+#       hamming_distance: 4
+      
+
